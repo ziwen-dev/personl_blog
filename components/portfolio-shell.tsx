@@ -33,25 +33,23 @@ export function PortfolioShell() {
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-32px)] max-w-7xl flex-col gap-5">
         <Header activeTab={activeTab} onChange={setActiveTab} theme={theme} onThemeToggle={toggleTheme} />
 
-        <section className="panel flex-1 overflow-hidden rounded-[2rem]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 14, scale: 0.992 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.995 }}
-              transition={transition}
-              className="h-full max-h-none overflow-y-auto p-5 md:p-8 lg:p-10"
-            >
-              {activeTab === "overview" && <Overview onChange={setActiveTab} />}
-              {activeTab === "projects" && <ProjectsView />}
-              {activeTab === "blog" && <BlogView />}
-              {activeTab === "architecture" && <ArchitectureView />}
-              {activeTab === "experiments" && <ExperimentsView />}
-              {activeTab === "about" && <AboutView />}
-            </motion.div>
-          </AnimatePresence>
-        </section>
+        <AnimatePresence mode="wait">
+          <motion.section
+            key={activeTab}
+            initial={{ opacity: 0, y: 14, scale: 0.992 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.995 }}
+            transition={transition}
+            className="panel flex-1 overflow-y-auto rounded-[2rem] p-5 md:p-8 lg:p-10"
+          >
+            {activeTab === "overview" && <Overview onChange={setActiveTab} />}
+            {activeTab === "projects" && <ProjectsView />}
+            {activeTab === "blog" && <BlogView />}
+            {activeTab === "architecture" && <ArchitectureView />}
+            {activeTab === "experiments" && <ExperimentsView />}
+            {activeTab === "about" && <AboutView />}
+          </motion.section>
+        </AnimatePresence>
       </div>
     </main>
   );
@@ -297,13 +295,9 @@ function TechStackShowcase() {
   ];
 
   return (
-    <div
-      className="relative overflow-hidden rounded-[2rem] border border-line bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(244,247,252,0.58))] p-6 shadow-[0_24px_70px_var(--shadow)] dark:border-white/[0.08] dark:bg-[#0b111c] dark:shadow-[0_24px_70px_rgba(0,0,0,0.42)] md:p-8"
-    >
-      <div className="absolute inset-0 grid-bg opacity-25 dark:opacity-20" />
-      <div className="absolute inset-0 hidden bg-[linear-gradient(135deg,rgba(18,26,39,0.92),rgba(8,12,20,0.98))] dark:block" />
-      <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-glow/15 blur-3xl dark:bg-blue-glow/[0.06]" />
-      <div className="absolute -left-28 bottom-[-10rem] h-80 w-80 rounded-full bg-cyan-glow/10 blur-3xl dark:bg-cyan-glow/[0.045]" />
+    <div className="relative overflow-hidden">
+      <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-glow/10 blur-3xl dark:bg-blue-glow/[0.05]" />
+      <div className="absolute -left-28 bottom-[-10rem] h-80 w-80 rounded-full bg-cyan-glow/8 blur-3xl dark:bg-cyan-glow/[0.04]" />
 
       <div className="relative grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
         <div>
@@ -351,11 +345,7 @@ function TechStackShowcase() {
         </div>
       </div>
 
-      <div
-        className="relative mt-8 rounded-[1.6rem] border border-line bg-background/38 p-4 backdrop-blur dark:border-white/[0.08] dark:bg-[#070b12] md:p-5"
-        onMouseEnter={() => setArranged(true)}
-        onMouseLeave={() => setArranged(false)}
-      >
+      <div className="relative mt-8" onMouseEnter={() => setArranged(true)} onMouseLeave={() => setArranged(false)}>
         <div className="grid gap-5 md:hidden">
           {stackGroups.map((group, index) => (
             <StackTechCard key={group.title} group={group} index={index} />
