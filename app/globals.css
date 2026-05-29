@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --background: #f7f8fb;
+  --foreground: #101522;
+  --muted: #667085;
+  --line: rgba(16, 21, 34, 0.1);
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.9);
+  --cyan: #207c93;
+  --emerald: #268568;
+  --blue: #345eea;
+  --amber: #a46a19;
+  --shadow: rgba(32, 46, 73, 0.12);
+  --grid: rgba(20, 28, 45, 0.085);
+}
+
+html.dark {
+  color-scheme: dark;
+  --background: #080b10;
+  --foreground: #f6f8fb;
+  --muted: #98a2b3;
+  --line: rgba(255, 255, 255, 0.1);
+  --panel: rgba(12, 17, 27, 0.68);
+  --panel-strong: rgba(14, 20, 32, 0.88);
+  --cyan: #62d7e8;
+  --emerald: #63d99c;
+  --blue: #83a2ff;
+  --amber: #e6b968;
+  --shadow: rgba(0, 0, 0, 0.28);
+  --grid: rgba(255, 255, 255, 0.075);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 48% -16%, color-mix(in srgb, var(--blue) 16%, transparent), transparent 34rem),
+    radial-gradient(circle at 8% 16%, color-mix(in srgb, var(--cyan) 12%, transparent), transparent 26rem),
+    radial-gradient(circle at 86% 10%, color-mix(in srgb, var(--emerald) 9%, transparent), transparent 28rem),
+    linear-gradient(135deg, color-mix(in srgb, var(--foreground) 4%, transparent), transparent 42%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--cyan) 28%, transparent);
+  color: var(--foreground);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-cyan-glow: var(--cyan);
+  --color-emerald-glow: var(--emerald);
+  --color-blue-glow: var(--blue);
+  --color-amber-glow: var(--amber);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: linear-gradient(to bottom, black, transparent 86%);
+}
+
+.glass {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: 0 12px 34px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--panel-strong) 80%, transparent), var(--panel)),
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--cyan) 8%, transparent), transparent 17rem);
+  box-shadow: 0 14px 42px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+}
+
+.text-gradient {
+  background: linear-gradient(112deg, var(--foreground) 8%, var(--blue) 42%, var(--cyan) 74%, var(--foreground) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.aurora-line {
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--cyan) 62%, transparent), color-mix(in srgb, var(--emerald) 42%, transparent), transparent);
+}
+
+.section-pad {
+  padding-top: clamp(4.5rem, 10vw, 8rem);
+  padding-bottom: clamp(4.5rem, 10vw, 8rem);
+}
+
+.display-title {
+  font-size: clamp(2.35rem, 5.2vw, 4.9rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.section-title {
+  font-size: clamp(1.7rem, 3.2vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--foreground) 24%, transparent) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--foreground) 18%, transparent);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
