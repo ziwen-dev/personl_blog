@@ -32,8 +32,7 @@ export type TabId = (typeof tabs)[number]["id"];
 export const profile = {
   title: "笔记、项目与智能系统",
   subtitle: "全栈开发工程师 / AI 应用开发者 / 智能系统工程师",
-  intro:
-    "我关注的是把一个想法做成可运行、可维护、可部署的系统：从前端交互、后端服务、实时通信，到 AI 工作流和自动化部署。",
+  intro: "这里放一些项目、笔记和最近在折腾的东西。",
   tags: ["AI 应用", "SpringBoot", "实时系统", "工程笔记"],
   status: [
     { label: "当前关注", value: "AI Agent / SSE" },
@@ -49,9 +48,9 @@ export const projects = [
     icon: Bot,
     tags: ["OpenAI 兼容接口", "SSE 流式输出", "Redis", "Docker", "多模型切换"],
     highlights: [
-      "把模型供应商、会话上下文和前端流式渲染拆成清晰边界",
-      "使用 Redis 管理短期记忆、会话状态与上下文裁剪",
-      "服务可容器化部署，方便继续接入 RAG 或 Agent 工具调用"
+      "支持流式输出和多模型切换",
+      "使用 Redis 保存会话状态",
+      "Docker 部署，方便本地和服务器环境迁移"
     ],
     modules: ["前端会话", "模型网关", "上下文记忆", "流式接口"],
     color: "from-sky-400/16 via-blue-400/8 to-transparent"
@@ -62,9 +61,9 @@ export const projects = [
     icon: Route,
     tags: ["WebSocket", "Hybrid A*", "任务调度", "实时地图", "路径规划"],
     highlights: [
-      "车辆状态、任务队列和地图状态通过 WebSocket 保持同步",
-      "路径规划考虑地图约束、转向代价和任务优先级",
-      "页面重点不是炫技，而是让调度状态能被快速判断"
+      "WebSocket 实时同步车辆和任务状态",
+      "Hybrid A* 路径规划",
+      "实时地图和调度看板"
     ],
     modules: ["实时地图", "调度器", "路径引擎", "状态同步"],
     color: "from-teal-400/16 via-sky-400/8 to-transparent"
@@ -75,9 +74,9 @@ export const projects = [
     icon: Network,
     tags: ["SpringCloud", "Gateway", "Redis", "MQ", "MySQL", "Docker Compose"],
     highlights: [
-      "网关负责统一入口、鉴权边界和服务路由",
-      "Redis 与 MQ 用于缓存、异步流程和削峰处理",
-      "通过 Docker Compose 固化本地开发和部署拓扑"
+      "网关、权限、业务服务拆分",
+      "Redis、MQ、MySQL 组合使用",
+      "Docker Compose 本地编排"
     ],
     modules: ["网关", "权限", "业务服务", "基础设施"],
     color: "from-indigo-400/16 via-sky-400/8 to-transparent"
@@ -88,9 +87,9 @@ export const projects = [
     icon: Workflow,
     tags: ["AI Agent", "工具调用", "SSE", "工作流", "执行追踪"],
     highlights: [
-      "把 Agent 执行拆成步骤、工具、状态和输出流",
-      "前端展示执行轨迹，便于调试模型行为",
-      "适合快速验证 AI 应用中的流程编排想法"
+      "Agent 步骤编排",
+      "工具调用记录",
+      "流式输出和执行轨迹展示"
     ],
     modules: ["Agent", "工具", "轨迹", "界面"],
     color: "from-violet-400/16 via-blue-400/8 to-transparent"
@@ -103,21 +102,21 @@ export const articles = [
     date: "2026 年 5 月",
     readTime: "约 7 分钟",
     tags: ["AI 工程", "SSE", "React"],
-    excerpt: "记录流式响应、取消请求、错误边界和前端状态更新里容易被忽略的小问题。"
+    excerpt: "整理 SSE 接口、前端状态和取消请求的一些处理方式。"
   },
   {
     title: "Redis 在 AI 应用里不只是缓存",
     date: "2026 年 4 月",
     readTime: "约 6 分钟",
     tags: ["Redis", "上下文", "后端"],
-    excerpt: "从会话记忆、限流、临时状态和队列几个角度，整理 Redis 在模型应用中的实际用法。"
+    excerpt: "会话、限流、临时状态和队列，几个项目里常用到的 Redis 用法。"
   },
   {
     title: "实时调度系统为什么要围绕反馈设计",
     date: "2026 年 3 月",
     readTime: "约 9 分钟",
     tags: ["WebSocket", "调度系统", "Hybrid A*"],
-    excerpt: "当地图、任务和车辆状态持续变化时，系统设计的重点会从功能完成转向状态可信。"
+    excerpt: "地图、任务和车辆状态持续变化时，调度页面要先把状态显示清楚。"
   },
   {
     title: "Docker + Nginx 部署前的小清单",
@@ -150,12 +149,12 @@ export const experiments = [
   { title: "Agent 运行时", text: "尝试把工具调用、步骤状态和流式输出整理成更容易调试的结构。", icon: BrainCircuit },
   { title: "路径规划实验", text: "围绕 Hybrid A*、地图约束和任务优先级做一些调度模拟。", icon: Route },
   { title: "实时界面", text: "研究 WebSocket、乐观更新和高频状态变化下的界面可读性。", icon: Zap },
-  { title: "工程笔记", text: "记录部署、后端边界、前端架构和 AI 应用里的实际经验。", icon: NotebookText }
+  { title: "工程笔记", text: "部署、接口、前端结构和 AI 应用相关记录。", icon: NotebookText }
 ];
 
 export const aboutPoints = [
-  { icon: Code2, title: "我更喜欢完整系统", text: "前端、接口、数据、流式输出、部署和文档最好能互相对齐。" },
-  { icon: GitBranch, title: "边做边记录", text: "博客更像工程笔记，不追求宏大叙事，优先记录真实项目里的取舍。" },
-  { icon: ServerCog, title: "关注可运行性", text: "项目能部署、能排查、能迭代，才算真正进入工程状态。" },
-  { icon: Sparkles, title: "AI 是工程的一层", text: "模型本身只是起点，真正重要的是状态、工具、界面和反馈闭环。" }
+  { icon: Code2, title: "做项目", text: "前端、后端、数据库和部署都会碰。" },
+  { icon: GitBranch, title: "写记录", text: "主要记一些项目里的实现和问题。" },
+  { icon: ServerCog, title: "跑服务", text: "Linux、Docker、Nginx 这些日常会用。" },
+  { icon: Sparkles, title: "试 AI", text: "对话、Agent、SSE 和工具调用都在做。" }
 ];

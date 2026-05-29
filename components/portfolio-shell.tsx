@@ -247,7 +247,7 @@ function ProjectsView() {
 function BlogView() {
   return (
     <>
-      <PageTitle eyebrow="技术博客" title="记录工程实践，沉淀系统思考。" text="这里的文章更偏工程笔记：记录实现过程、踩坑、系统边界和一些可复用的判断。" />
+      <PageTitle eyebrow="技术博客" title="最近写的几篇。" text="主要是项目里遇到的问题和一些实现记录。" />
       <div className="grid gap-4 xl:grid-cols-2">
         {articles.map((article) => (
           <article key={article.title} className="rounded-3xl border border-line bg-background/40 p-6 transition hover:-translate-y-1 hover:border-cyan-glow/35">
@@ -274,7 +274,7 @@ function BlogView() {
 function ArchitectureView() {
   return (
     <>
-      <PageTitle eyebrow="系统架构" title="技术栈不是列表，而是一组可组合的能力。" text="围绕前端、后端、AI 应用、基础设施、调度规划和交付部署，整理常用技术与工程能力。" />
+      <PageTitle eyebrow="系统架构" title="常用技术栈。" text="按平时做项目会用到的方向简单分了一下。" />
       <FloatingStackCards />
     </>
   );
@@ -387,7 +387,7 @@ function FloatingStackCards() {
 function ExperimentsView() {
   return (
     <>
-      <PageTitle eyebrow="AI 实验" title="一些还在生长的小东西。" text="实验区不追求完整包装，更关注一个想法能否被验证，以及它能不能进入下一个正式项目。" />
+      <PageTitle eyebrow="AI 实验" title="一些小实验。" text="有些是半成品，有些只是为了验证一个功能点。" />
       <div className="grid gap-4 md:grid-cols-2">
         {experiments.map((item) => (
           <div key={item.title} className="rounded-3xl border border-line bg-background/40 p-6">
@@ -404,7 +404,7 @@ function ExperimentsView() {
 function AboutView() {
   return (
     <>
-      <PageTitle eyebrow="关于我" title="这是一个个人开发者站，不是商业官网。" text="我希望这里能留下项目、文章和架构思考，而不是堆砌技术名词。" />
+      <PageTitle eyebrow="关于我" title="关于这个站。" text="这里会放一些项目、文章和日常记录。" />
       <div className="grid gap-4 md:grid-cols-2">
         {aboutPoints.map((point) => (
           <div key={point.title} className="rounded-3xl border border-line bg-background/40 p-6">
@@ -416,7 +416,7 @@ function AboutView() {
       </div>
       <div className="mt-5 rounded-3xl border border-line bg-background/40 p-6">
         <h2 className="text-2xl font-semibold text-foreground">联系</h2>
-        <p className="mt-3 text-sm leading-7 text-muted">如果你想聊 AI 应用、全栈系统、调度平台或工程化实现，可以从这里开始。</p>
+        <p className="mt-3 text-sm leading-7 text-muted">有项目或想法可以直接联系我。</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <GlowButton href="mailto:hello@example.com">
             <Mail size={17} /> hello@example.com
@@ -425,7 +425,7 @@ function AboutView() {
             <GitBranch size={17} /> Github
           </GlowButton>
           <GlowButton href="#" variant="ghost">
-            <Send size={17} /> 发送想法
+            <Send size={17} /> 联系我
           </GlowButton>
         </div>
       </div>
