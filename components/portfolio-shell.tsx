@@ -278,22 +278,44 @@ function ArchitectureView() {
 }
 
 function TechStackShowcase() {
+  const [arranged, setArranged] = useState(false);
+  const floatingPositions = [
+    { x: "4%", y: "8%", rotate: -4 },
+    { x: "38%", y: "4%", rotate: 2 },
+    { x: "68%", y: "11%", rotate: -3 },
+    { x: "8%", y: "57%", rotate: 3 },
+    { x: "39%", y: "51%", rotate: -2 },
+    { x: "69%", y: "58%", rotate: 2 }
+  ];
+  const arrangedPositions = [
+    { x: "3%", y: "8%" },
+    { x: "36%", y: "8%" },
+    { x: "69%", y: "8%" },
+    { x: "3%", y: "62%" },
+    { x: "36%", y: "62%" },
+    { x: "69%", y: "62%" }
+  ];
+
   return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-line bg-[linear-gradient(135deg,rgba(255,255,255,0.76),rgba(245,248,255,0.52))] p-6 shadow-[0_24px_70px_var(--shadow)] dark:bg-[linear-gradient(135deg,rgba(16,22,34,0.78),rgba(9,13,22,0.72))] md:p-8">
+    <div
+      className="relative overflow-hidden rounded-[2rem] border border-line bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(244,247,252,0.58))] p-6 shadow-[0_24px_70px_var(--shadow)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(13,18,28,0.96),rgba(7,10,17,0.94))] dark:shadow-[0_24px_70px_rgba(0,0,0,0.35)] md:p-8"
+      onMouseEnter={() => setArranged(true)}
+      onMouseLeave={() => setArranged(false)}
+    >
       <div className="absolute inset-0 grid-bg opacity-25" />
-      <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-glow/15 blur-3xl" />
-      <div className="absolute -left-28 bottom-[-10rem] h-80 w-80 rounded-full bg-cyan-glow/10 blur-3xl" />
+      <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-glow/15 blur-3xl dark:bg-blue-glow/8" />
+      <div className="absolute -left-28 bottom-[-10rem] h-80 w-80 rounded-full bg-cyan-glow/10 blur-3xl dark:bg-cyan-glow/6" />
 
       <div className="relative grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
         <div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-glow/15 bg-blue-glow/8 px-4 py-2 text-xs font-medium text-blue-glow">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-glow/15 bg-blue-glow/8 px-4 py-2 text-xs font-medium text-blue-glow dark:border-blue-glow/20 dark:bg-blue-glow/10">
             <span className="h-2 w-2 rounded-full bg-blue-glow" />
             系统 · 架构 · 工程实践
           </div>
           <h1 className="max-w-2xl text-4xl font-semibold leading-tight text-foreground md:text-5xl">
             常用技术栈。
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-muted">
+          <p className="mt-5 max-w-2xl text-base leading-8 text-muted dark:text-white/58">
             按平时做项目会用到的方向简单分了一下，方便快速查看和选择。
           </p>
           <div className="mt-7 flex flex-wrap gap-6 text-sm text-muted">
@@ -315,9 +337,9 @@ function TechStackShowcase() {
         <div className="relative hidden h-56 lg:block">
           <div className="absolute right-12 top-3 h-44 w-36 rotate-12 rounded-3xl border border-white/60 bg-white/38 shadow-[0_18px_50px_rgba(65,82,140,0.18)] backdrop-blur dark:border-white/10 dark:bg-white/[0.05]" />
           <div className="absolute right-28 top-12 h-36 w-44 -rotate-6 rounded-3xl border border-white/60 bg-white/36 p-6 shadow-[0_18px_50px_rgba(65,82,140,0.16)] backdrop-blur dark:border-white/10 dark:bg-white/[0.05]">
-            <div className="h-4 w-28 rounded-full bg-foreground/8" />
-            <div className="mt-4 h-4 w-36 rounded-full bg-foreground/8" />
-            <div className="mt-4 h-4 w-24 rounded-full bg-foreground/8" />
+            <div className="h-4 w-28 rounded-full bg-foreground/8 dark:bg-white/10" />
+            <div className="mt-4 h-4 w-36 rounded-full bg-foreground/8 dark:bg-white/10" />
+            <div className="mt-4 h-4 w-24 rounded-full bg-foreground/8 dark:bg-white/10" />
           </div>
           <div className="absolute right-4 top-0 flex h-24 w-24 rotate-6 items-center justify-center rounded-3xl border border-white/65 bg-gradient-to-br from-blue-glow/45 to-cyan-glow/20 text-white shadow-[0_18px_45px_rgba(64,97,255,0.28)] backdrop-blur">
             <Code2 size={42} />
@@ -330,45 +352,47 @@ function TechStackShowcase() {
         </div>
       </div>
 
-      <div className="relative mt-8 rounded-[1.6rem] border border-line bg-background/38 p-5 backdrop-blur">
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div className="relative mt-8 rounded-[1.6rem] border border-line bg-background/38 p-5 backdrop-blur dark:border-white/10 dark:bg-white/[0.035]">
+        <div className="grid gap-5 md:hidden">
           {stackGroups.map((group, index) => (
-            <motion.article
-              key={group.title}
-              className="group relative overflow-hidden rounded-3xl border border-line bg-[color-mix(in_srgb,var(--background)_88%,white_12%)] p-5 shadow-[0_10px_28px_var(--shadow)] transition dark:bg-[color-mix(in_srgb,var(--background)_86%,white_6%)]"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.04 }}
-              whileHover={{ y: -6 }}
-            >
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-glow/65 to-transparent" />
-              <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-blue-glow/10 blur-2xl transition group-hover:bg-cyan-glow/15" />
-              <div className="relative flex items-start justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-glow/10 text-blue-glow ring-1 ring-blue-glow/15">
-                  <group.icon size={23} />
-                </div>
-                <span className="rounded-full border border-line bg-background/45 px-2.5 py-1 text-xs text-muted">
-                  0{index + 1}
-                </span>
-              </div>
-              <h2 className="relative mt-6 text-xl font-semibold text-foreground">{group.title}</h2>
-              <div className="relative mt-4 flex flex-wrap gap-2">
-                {group.items.slice(0, 5).map((item) => (
-                  <span key={item} className="rounded-full border border-line bg-foreground/[0.035] px-3 py-1.5 text-xs text-muted">
-                    {item}
-                  </span>
-                ))}
-              </div>
-              <div className="relative mt-6 h-1.5 overflow-hidden rounded-full bg-foreground/[0.06]">
-                <span className="block h-full w-[58%] rounded-full bg-gradient-to-r from-blue-glow to-cyan-glow" />
-              </div>
-            </motion.article>
+            <StackTechCard key={group.title} group={group} index={index} />
           ))}
+        </div>
+
+        <div className="relative hidden h-[670px] md:block">
+          {stackGroups.map((group, index) => {
+            const free = floatingPositions[index];
+            const aligned = arrangedPositions[index];
+            return (
+              <motion.div
+                key={group.title}
+                className="absolute w-[27%] min-w-[200px] max-w-[245px]"
+                animate={{
+                  left: arranged ? aligned.x : free.x,
+                  top: arranged ? aligned.y : free.y,
+                  rotate: arranged ? 0 : free.rotate,
+                  scale: arranged ? 1 : index % 2 === 0 ? 1.015 : 0.995
+                }}
+                transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -8, scale: 1.025 }}
+              >
+                <motion.div
+                  animate={arranged ? { y: 0 } : { y: [0, index % 2 === 0 ? -10 : 10, 0] }}
+                  transition={
+                    arranged
+                      ? { duration: 0.28 }
+                      : { duration: 4.6 + index * 0.32, repeat: Infinity, ease: "easeInOut" }
+                  }
+                >
+                  <StackTechCard group={group} index={index} />
+                </motion.div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
-      <div className="relative mt-5 flex flex-col gap-3 rounded-3xl border border-line bg-background/40 p-4 text-sm text-muted md:flex-row md:items-center md:justify-between">
+      <div className="relative mt-5 flex flex-col gap-3 rounded-3xl border border-line bg-background/40 p-4 text-sm text-muted dark:border-white/10 dark:bg-white/[0.035] md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
           <Sparkles className="text-blue-glow" size={20} />
           <span>专注项目实现、系统设计和日常记录。</span>
@@ -378,6 +402,40 @@ function TechStackShowcase() {
         </a>
       </div>
     </div>
+  );
+}
+
+function StackTechCard({
+  group,
+  index
+}: {
+  group: (typeof stackGroups)[number];
+  index: number;
+}) {
+  return (
+    <article className="group relative overflow-hidden rounded-3xl border border-line bg-[color-mix(in_srgb,var(--background)_88%,white_12%)] p-5 shadow-[0_10px_28px_var(--shadow)] transition dark:border-white/10 dark:bg-[#101723]/88 dark:shadow-[0_12px_34px_rgba(0,0,0,0.32)]">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-glow/65 to-transparent dark:via-blue-glow/45" />
+      <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-blue-glow/10 blur-2xl transition group-hover:bg-cyan-glow/15 dark:bg-blue-glow/8 dark:group-hover:bg-cyan-glow/10" />
+      <div className="relative flex items-start justify-between">
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-glow/10 text-blue-glow ring-1 ring-blue-glow/15 dark:bg-blue-glow/12 dark:ring-blue-glow/20">
+          <group.icon size={23} />
+        </div>
+        <span className="rounded-full border border-line bg-background/45 px-2.5 py-1 text-xs text-muted dark:border-white/10 dark:bg-white/[0.035] dark:text-white/45">
+          0{index + 1}
+        </span>
+      </div>
+      <h2 className="relative mt-6 text-xl font-semibold text-foreground dark:text-white/90">{group.title}</h2>
+      <div className="relative mt-4 flex flex-wrap gap-2">
+        {group.items.slice(0, 5).map((item) => (
+          <span key={item} className="rounded-full border border-line bg-foreground/[0.035] px-3 py-1.5 text-xs text-muted dark:border-white/10 dark:bg-white/[0.035] dark:text-white/52">
+            {item}
+          </span>
+        ))}
+      </div>
+      <div className="relative mt-6 h-1.5 overflow-hidden rounded-full bg-foreground/[0.06] dark:bg-white/[0.06]">
+        <span className="block h-full w-[58%] rounded-full bg-gradient-to-r from-blue-glow to-cyan-glow dark:from-blue-glow/80 dark:to-cyan-glow/70" />
+      </div>
+    </article>
   );
 }
 
