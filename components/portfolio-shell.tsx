@@ -274,7 +274,7 @@ function BlogView() {
 function ArchitectureView() {
   return (
     <>
-      <PageTitle eyebrow="系统架构" title="技术栈不是列表，而是一组可组合的能力。" text="默认状态下卡片像系统模块一样自由漂浮；鼠标进入区域后，它们会收拢成清晰的工程能力矩阵。" />
+      <PageTitle eyebrow="系统架构" title="技术栈不是列表，而是一组可组合的能力。" text="围绕前端、后端、AI 应用、基础设施、调度规划和交付部署，整理常用技术与工程能力。" />
       <FloatingStackCards />
     </>
   );
