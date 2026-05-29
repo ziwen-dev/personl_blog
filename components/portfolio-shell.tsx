@@ -299,8 +299,6 @@ function TechStackShowcase() {
   return (
     <div
       className="relative overflow-hidden rounded-[2rem] border border-line bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(244,247,252,0.58))] p-6 shadow-[0_24px_70px_var(--shadow)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(13,18,28,0.96),rgba(7,10,17,0.94))] dark:shadow-[0_24px_70px_rgba(0,0,0,0.35)] md:p-8"
-      onMouseEnter={() => setArranged(true)}
-      onMouseLeave={() => setArranged(false)}
     >
       <div className="absolute inset-0 grid-bg opacity-25" />
       <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-glow/15 blur-3xl dark:bg-blue-glow/8" />
@@ -352,7 +350,11 @@ function TechStackShowcase() {
         </div>
       </div>
 
-      <div className="relative mt-8 rounded-[1.6rem] border border-line bg-background/38 p-5 backdrop-blur dark:border-white/10 dark:bg-white/[0.035]">
+      <div
+        className="relative mt-8 rounded-[1.6rem] border border-line bg-background/38 p-5 backdrop-blur dark:border-white/10 dark:bg-white/[0.035]"
+        onMouseEnter={() => setArranged(true)}
+        onMouseLeave={() => setArranged(false)}
+      >
         <div className="grid gap-5 md:hidden">
           {stackGroups.map((group, index) => (
             <StackTechCard key={group.title} group={group} index={index} />
@@ -413,7 +415,7 @@ function StackTechCard({
   index: number;
 }) {
   return (
-    <article className="group relative overflow-hidden rounded-3xl border border-line bg-[color-mix(in_srgb,var(--background)_88%,white_12%)] p-5 shadow-[0_10px_28px_var(--shadow)] transition dark:border-white/10 dark:bg-[#101723]/88 dark:shadow-[0_12px_34px_rgba(0,0,0,0.32)]">
+    <article className="group relative flex h-[238px] flex-col overflow-hidden rounded-3xl border border-line bg-[color-mix(in_srgb,var(--background)_88%,white_12%)] p-5 shadow-[0_10px_28px_var(--shadow)] transition dark:border-white/10 dark:bg-[#101723]/88 dark:shadow-[0_12px_34px_rgba(0,0,0,0.32)]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-glow/65 to-transparent dark:via-blue-glow/45" />
       <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-blue-glow/10 blur-2xl transition group-hover:bg-cyan-glow/15 dark:bg-blue-glow/8 dark:group-hover:bg-cyan-glow/10" />
       <div className="relative flex items-start justify-between">
@@ -425,14 +427,14 @@ function StackTechCard({
         </span>
       </div>
       <h2 className="relative mt-6 text-xl font-semibold text-foreground dark:text-white/90">{group.title}</h2>
-      <div className="relative mt-4 flex flex-wrap gap-2">
+      <div className="relative mt-4 flex min-h-[66px] flex-wrap content-start gap-2">
         {group.items.slice(0, 5).map((item) => (
           <span key={item} className="rounded-full border border-line bg-foreground/[0.035] px-3 py-1.5 text-xs text-muted dark:border-white/10 dark:bg-white/[0.035] dark:text-white/52">
             {item}
           </span>
         ))}
       </div>
-      <div className="relative mt-6 h-1.5 overflow-hidden rounded-full bg-foreground/[0.06] dark:bg-white/[0.06]">
+      <div className="relative mt-auto h-1.5 overflow-hidden rounded-full bg-foreground/[0.06] dark:bg-white/[0.06]">
         <span className="block h-full w-[58%] rounded-full bg-gradient-to-r from-blue-glow to-cyan-glow dark:from-blue-glow/80 dark:to-cyan-glow/70" />
       </div>
     </article>
