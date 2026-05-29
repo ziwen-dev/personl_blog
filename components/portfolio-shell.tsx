@@ -280,20 +280,20 @@ function ArchitectureView() {
 function TechStackShowcase() {
   const [arranged, setArranged] = useState(false);
   const floatingPositions = [
-    { x: "4%", y: "8%", rotate: -4 },
-    { x: "38%", y: "4%", rotate: 2 },
-    { x: "68%", y: "11%", rotate: -3 },
-    { x: "8%", y: "57%", rotate: 3 },
-    { x: "39%", y: "51%", rotate: -2 },
-    { x: "69%", y: "58%", rotate: 2 }
+    { x: "3%", y: "7%", rotate: -3 },
+    { x: "35%", y: "4%", rotate: 2 },
+    { x: "67%", y: "8%", rotate: -2 },
+    { x: "6%", y: "55%", rotate: 2 },
+    { x: "36%", y: "51%", rotate: -2 },
+    { x: "67%", y: "55%", rotate: 2 }
   ];
   const arrangedPositions = [
-    { x: "3%", y: "8%" },
-    { x: "36%", y: "8%" },
-    { x: "69%", y: "8%" },
-    { x: "3%", y: "62%" },
-    { x: "36%", y: "62%" },
-    { x: "69%", y: "62%" }
+    { x: "2%", y: "7%" },
+    { x: "35%", y: "7%" },
+    { x: "68%", y: "7%" },
+    { x: "2%", y: "56%" },
+    { x: "35%", y: "56%" },
+    { x: "68%", y: "56%" }
   ];
 
   return (
@@ -351,7 +351,7 @@ function TechStackShowcase() {
       </div>
 
       <div
-        className="relative mt-8 rounded-[1.6rem] border border-line bg-background/38 p-5 backdrop-blur dark:border-white/10 dark:bg-white/[0.035]"
+        className="relative mt-8 rounded-[1.6rem] border border-line bg-background/38 p-4 backdrop-blur dark:border-white/10 dark:bg-white/[0.035] md:p-5"
         onMouseEnter={() => setArranged(true)}
         onMouseLeave={() => setArranged(false)}
       >
@@ -361,14 +361,14 @@ function TechStackShowcase() {
           ))}
         </div>
 
-        <div className="relative hidden h-[670px] md:block">
+        <div className="relative hidden h-[640px] md:block">
           {stackGroups.map((group, index) => {
             const free = floatingPositions[index];
             const aligned = arrangedPositions[index];
             return (
               <motion.div
                 key={group.title}
-                className="absolute w-[27%] min-w-[200px] max-w-[245px]"
+                className="absolute w-[30%] min-w-[235px] max-w-[295px]"
                 animate={{
                   left: arranged ? aligned.x : free.x,
                   top: arranged ? aligned.y : free.y,
@@ -415,7 +415,7 @@ function StackTechCard({
   index: number;
 }) {
   return (
-    <article className="group relative flex h-[238px] flex-col overflow-hidden rounded-3xl border border-line bg-[color-mix(in_srgb,var(--background)_88%,white_12%)] p-5 shadow-[0_10px_28px_var(--shadow)] transition dark:border-white/10 dark:bg-[#101723]/88 dark:shadow-[0_12px_34px_rgba(0,0,0,0.32)]">
+    <article className="group relative flex h-[268px] flex-col overflow-hidden rounded-3xl border border-line bg-[color-mix(in_srgb,var(--background)_88%,white_12%)] p-6 shadow-[0_10px_28px_var(--shadow)] transition dark:border-white/10 dark:bg-[#101723]/88 dark:shadow-[0_12px_34px_rgba(0,0,0,0.32)]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-glow/65 to-transparent dark:via-blue-glow/45" />
       <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-blue-glow/10 blur-2xl transition group-hover:bg-cyan-glow/15 dark:bg-blue-glow/8 dark:group-hover:bg-cyan-glow/10" />
       <div className="relative flex items-start justify-between">
@@ -426,8 +426,8 @@ function StackTechCard({
           0{index + 1}
         </span>
       </div>
-      <h2 className="relative mt-6 text-xl font-semibold text-foreground dark:text-white/90">{group.title}</h2>
-      <div className="relative mt-4 flex min-h-[66px] flex-wrap content-start gap-2">
+      <h2 className="relative mt-6 text-2xl font-semibold text-foreground dark:text-white/90">{group.title}</h2>
+      <div className="relative mt-4 flex min-h-[78px] flex-wrap content-start gap-2">
         {group.items.slice(0, 5).map((item) => (
           <span key={item} className="rounded-full border border-line bg-foreground/[0.035] px-3 py-1.5 text-xs text-muted dark:border-white/10 dark:bg-white/[0.035] dark:text-white/52">
             {item}
